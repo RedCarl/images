@@ -84,11 +84,11 @@ Status ngx_weserv_upstream_set_url(ngx_pool_t *pool,
     // rather an IP address, for example: ?url=http://46.4.13.221/...
     bool has_ip = parsed_url.addrs != nullptr && parsed_url.addrs[0].sockaddr;
 
-    if (has_ip && deny != nullptr &&
-        ngx_cidr_match(parsed_url.addrs[0].sockaddr, deny) == NGX_OK) {
-        return {Status::Code::InvalidUri, "IP address blocked by policy",
-                Status::ErrorCause::Application};
-    }
+    // if (has_ip && deny != nullptr &&
+    //     ngx_cidr_match(parsed_url.addrs[0].sockaddr, deny) == NGX_OK) {
+    //     return {Status::Code::InvalidUri, "IP address blocked by policy",
+    //             Status::ErrorCause::Application};
+    // }
 
     // Detect situation where input URL was of the form:
     //     https://domain.com?query_parameters
